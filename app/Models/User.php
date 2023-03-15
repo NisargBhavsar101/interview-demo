@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'mobile_number',
         'email',
         'password',
     ];
@@ -41,4 +43,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function booking()
+    {
+        return $this->hasMany(Booking::class,'user_id');
+    }
 }
